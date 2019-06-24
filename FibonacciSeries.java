@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class FibonacciSeries extends BaseTestNg {
 
 	@Test(priority=1)
-	public void Series() {
+	public void series() {
 		int n1=0,n2=1,n3,i,count=10; 
 		//printing 0 and 1
 		System.out.println(n2);
