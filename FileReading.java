@@ -7,36 +7,49 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class FileReading extends BaseTestNg{
-	String fileName = "MyFile.txt";
+	
 	@Test(priority=1)
-	public void fileRead() {
-		String line =null;
-		try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				while((line = br.readLine())!= null) {
-					System.out.println(line);
-				}
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}} catch (FileNotFoundException e) {
-				e.printStackTrace();
+	public void readUsingBuffer() throws IOException {
+		String str;
 
-}
-}
+		File file = new File("./capgemini.txt"); 
+		BufferedReader br = new BufferedReader(new FileReader(file)); 
+
+		while ((str = br.readLine()) != null) 
+			System.out.println(str); 
+
+		br.close();
+	} 
+	
 	@Test(priority=2)
-	public void read() throws FileNotFoundException {
-		File file =  new File("fileName");
-				Scanner sc = new Scanner(file);
+	public void readUsingReader() throws IOException {
+		int i; 
+		FileReader reader = new FileReader("./capgemini.txt"); 
 
-				while (sc.hasNextLine())
-					System.out.println(sc.nextLine());
-		         sc.close();
-			}
+		while ((i=reader.read()) != -1) 
+			System.out.print((char) i); 
+
+		reader.close();
+		System.out.println("");
+	} 
+
+	@Test(priority=3)
+	public void readUsingScanner() throws IOException {
+
+		File file = new File("./capgemini.txt"); 
+		Scanner sc = new Scanner(file); 
+
+		while (sc.hasNextLine()) 
+			System.out.println(sc.nextLine()); 
+
+		sc.close();
+	}
+
+	
+	
 
 }

@@ -6,7 +6,8 @@ public class FindingAll  extends BaseTestNg {
 	String test = "$$ Welcome to 1st Automation Interview $$ ";
 	char[] ch = test.toCharArray();
 	//public  int  letter = 0, space = 0, num = 0, specialChar = 0;
-	@Test(priority=1)
+
+	@Test(priority=1) // longest code
 	public void findingAll() {
 		for(int i = 0; i < test.length(); i++){
 			if(Character.isLetter(ch[i])){
@@ -27,7 +28,9 @@ public class FindingAll  extends BaseTestNg {
 		System.out.println("number: " + num);
 		System.out.println("specialCharcter: " + specialChar);
 	}
-	@Test(priority=2)
+
+
+	@Test(priority=2) // using ASCII
 	public void findAllCharactesInString() {
 		for (int j = 0; j < ch.length; j++) {
 			if (((int)ch[j] >= 65 && (int)ch[j] <= 122)){				
@@ -41,14 +44,26 @@ public class FindingAll  extends BaseTestNg {
 			}
 		}
 		System.out.println("letter count: " +letter);
-        System.out.println("number count:" + num );
-        System.out.println(" special character count:" +specialChar);
-		}
-	@Test()
-	public void usingRegx() {
-		
+		System.out.println("number count:" + num );
+		System.out.println(" special character count:" +specialChar);
 	}
+
+
+	@Test(priority=3) // Simpler Coding
+ 	public void usingRegx() {
+
+		String alp = test.replaceAll("[^a-zA-Z]", "");
+		System.out.println(alp);
+
+		String onlyNumber = test.replaceAll("[^0-9]", ""); // other options is \\D
+		System.out.println(onlyNumber);
+
+		String spl = test.replaceAll("[0-9a-zA-Z ]", ""); //excluding space as well
+		System.out.println(spl);
+
+
 	}
+}
 
 
 
